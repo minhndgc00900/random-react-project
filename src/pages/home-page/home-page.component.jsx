@@ -1,9 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import Header from '../../layouts/header/header.component'
 
-export const HomePage = (props) => {
-	return <div>HomePage</div>
+const HomePage = (props) => {
+	return (
+		<>
+			<div>
+				<Header />
+			</div>
+			<div>HomePage</div>
+		</>
+	)
 }
 
 HomePage.propTypes = {
