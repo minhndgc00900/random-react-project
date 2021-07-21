@@ -1,9 +1,8 @@
-// jsconfig.paths.json or tsconfig.paths.json
 {
     "compilerOptions": {
       "baseUrl": ".",
       "paths": {
-        "public/*": ["public/src/*"],
+        "public/*": ["public/*"],
         "@library/*": ["library/src/*"]
       }
     }

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import ReactLogo from '../../../public/bds_logo.svg'
+import { ReactComponent as ReactLogo } from 'public/bds_logo.svg'
 import useStyles from './header.styles'
 
 const Header = (props) => {
