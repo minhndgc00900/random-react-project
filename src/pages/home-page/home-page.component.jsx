@@ -3,23 +3,16 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 export const HomePage = (props) => {
-    return (
-        <div>
-            HomePage
-        </div>
-    )
+	return <div>HomePage</div>
 }
 
 HomePage.propTypes = {
-    props: PropTypes
+	// props: PropTypes,
 }
 
-const mapStateToProps = (state) => ({
-    
-})
+const mapStateToProps = (state) => ({})
 
-const mapDispatchToProps = {
-    
-}
+const mapDispatchToProps = {}
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage)
+// export default connect(mapStateToProps, mapDispatchToProps)(HomePage)
+export default HomePage
