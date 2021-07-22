@@ -26,7 +26,7 @@ const Header = (props) => {
 						<Grid item xs={1}>
 							<ReactLogo />
 						</Grid>
-						<Grid item xs={8}>
+						<Grid item xs={7}>
 							<ul className={classes.menuContainer}>
 								<li>
 									<Link color='initial' component='button'>
@@ -84,7 +84,7 @@ const Header = (props) => {
 								</li>
 							</ul>
 						</Grid>
-						<Grid item xs={3}>
+						<Grid item xs={4}>
 							<ul className={classes.btnMenuContainer}>
 								<li>
 									<Button>

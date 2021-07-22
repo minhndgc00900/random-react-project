@@ -14,7 +14,7 @@ const useStyles = makeStyles({
 		},
 	},
 	btnMenuContainer: {
-		paddingLeft: '8em',
+		float: 'right',
 		marginTop: '4px',
 		'& > li': {
 			display: 'inline-block',
