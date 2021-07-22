@@ -2,16 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Header from '../../layouts/header/header.component'
+import useStyles from './home-page.styles'
 
 const HomePage = (props) => {
-	return (
-		<>
-			<div>
-				<Header />
-			</div>
-			<div>HomePage</div>
-		</>
-	)
+	const classes = useStyles()
+
+	return <div className={classes.homepageContainer}>HomePage</div>
 }
 
 HomePage.propTypes = {
