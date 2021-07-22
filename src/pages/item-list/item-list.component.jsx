@@ -3,11 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 const ItemList = (props) => {
-	return (
-		<div>
-			<p>item list page</p>
-		</div>
-	)
+	return <div>item list page</div>
 }
 
 ItemList.propTypes = {

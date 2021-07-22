@@ -18,6 +18,7 @@ function App() {
 				<Header />
 			</div>
 			<Toolbar />
+			<Toolbar />
 			<Container>
 				<Router>
 					<Suspense fallback={<div>Loading...</div>}>
