@@ -14,12 +14,11 @@ function App() {
 
 	return (
 		<>
-			<div>
-				<Header />
-			</div>
-			<Toolbar />
-			<Container>
-				<Router>
+			<Router>
+				<>
+					<Header />
+				</>
+				<Container>
 					<Suspense fallback={<div>Loading...</div>}>
 						<Switch>
 							<Route exact path={ROUTES.home} component={HomePage} />
@@ -30,8 +29,8 @@ function App() {
 							/>
 						</Switch>
 					</Suspense>
-				</Router>
-			</Container>
+				</Container>
+			</Router>
 		</>
 	)
 }

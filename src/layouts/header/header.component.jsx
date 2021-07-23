@@ -13,9 +13,12 @@ import {
 	Toolbar,
 	Typography,
 } from '@material-ui/core'
+import * as ROUTES from '../../constants/index'
 import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined'
+import { useHistory } from 'react-router-dom'
 
 const Header = (props) => {
+	let history = useHistory()
 	const classes = useStyles()
 	return (
 		<>
@@ -36,7 +39,13 @@ const Header = (props) => {
 									</Link>
 								</li>
 								<li>
-									<Link color='initial' component='button'>
+									<Link
+										onClick={() => {
+											history.push('/nha-dat-cho-thue')
+										}}
+										color='initial'
+										component='button'
+									>
 										<Typography className={classes.fontMenu}>
 											Nhà đất cho thuê
 										</Typography>

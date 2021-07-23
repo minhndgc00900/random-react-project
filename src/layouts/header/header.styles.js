@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core'
 const useStyles = makeStyles({
 	headerContainer: {
 		padding: '17px 0px 17px',
+		position: 'relative',
 	},
 	content: {
 		marginTop: '100px',
