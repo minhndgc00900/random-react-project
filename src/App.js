@@ -14,25 +14,19 @@ function App() {
 
 	return (
 		<>
-			<div>
+			<Router>
 				<Header />
-			</div>
-			<Toolbar />
-			<Toolbar />
-			<Container>
-				<Router>
-					<Suspense fallback={<div>Loading...</div>}>
-						<Switch>
-							<Route exact path={ROUTES.home} component={HomePage} />
-							<Route
-								exact
-								path={ROUTES.propertyForLease}
-								component={PropertyForLease}
-							/>
-						</Switch>
-					</Suspense>
-				</Router>
-			</Container>
+				<Suspense fallback={<div>Loading...</div>}>
+					<Switch>
+						<Route exact path={ROUTES.home} component={HomePage} />
+						<Route
+							exact
+							path={ROUTES.propertyForLease}
+							component={PropertyForLease}
+						/>
+					</Switch>
+				</Suspense>
+			</Router>
 		</>
 	)
 }

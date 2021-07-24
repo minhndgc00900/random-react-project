@@ -4,16 +4,9 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { ReactComponent as ReactLogo } from 'public/bds_logo.svg'
 import useStyles from './header.styles'
-import {
-	Button,
-	Grid,
-	Link,
-	Menu,
-	MenuItem,
-	Toolbar,
-	Typography,
-} from '@material-ui/core'
+import { Button, Grid, Toolbar, Link, Typography } from '@material-ui/core'
 import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined'
+import { Link as LinkRRD } from 'react-router-dom'
 
 const Header = (props) => {
 	const classes = useStyles()
@@ -36,7 +29,11 @@ const Header = (props) => {
 									</Link>
 								</li>
 								<li>
-									<Link color='initial' component='button'>
+									<Link
+										color='initial'
+										component={LinkRRD}
+										to={'/nha-dat-cho-thue'}
+									>
 										<Typography className={classes.fontMenu}>
 											Nhà đất cho thuê
 										</Typography>
