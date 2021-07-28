@@ -24,6 +24,7 @@ const useStyles = makeStyles({
 	customisedLink: {
 		backgroundColor: 'initial',
 		color: 'rgb(221, 86, 77)',
+		fontSize: '15px',
 	},
 	bottomInfo: {
 		marginTop: '19px',
@@ -37,6 +38,8 @@ const useStyles = makeStyles({
 		whiteSpace: 'nowrap',
 		overflow: 'hidden !important',
 		textOverflow: 'ellipsis',
+		color: 'rgb(153, 144, 131)',
+		fontSize: '13px',
 		// '&:hover': {
 		// 	textOverflow: 'clip',
 		// 	whiteSpace: 'normal',
