@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import AppBar from '@material-ui/core/AppBar'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -7,11 +7,23 @@ import useStyles from './header.styles'
 import { Button, Grid, Toolbar, Link, Typography } from '@material-ui/core'
 import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined'
 import { Link as LinkRRD } from 'react-router-dom'
+import LoginForm from '../login/login.component'
 
 const Header = (props) => {
 	const classes = useStyles()
+	const [openLogin, setOpenLogin] = useState(false)
+
+	const handleClickOpenLogin = () => {
+		setOpenLogin(true)
+	}
+
+	const handleCloseLogin = () => {
+		setOpenLogin(false)
+	}
+
 	return (
 		<>
+			<LoginForm open={openLogin} handleCloseLogin={handleCloseLogin} />
 			{/* <ReactLogo /> */}
 			<AppBar className={classes.headerContainer} color='transparent'>
 				<Toolbar>
@@ -89,7 +101,7 @@ const Header = (props) => {
 									</Button>
 								</li>
 								<li>
-									<Button>
+									<Button onClick={handleClickOpenLogin}>
 										<Typography className={classes.fontMenu}>
 											Đăng Nhập
 										</Typography>
