@@ -1,9 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import Header from '../../layouts/header/header.component'
+import useStyles from './home-page.styles'
 
-export const HomePage = (props) => {
-	return <div>HomePage</div>
+const HomePage = (props) => {
+	const classes = useStyles()
+
+	return <div className={classes.homepageContainer}>HomePage</div>
 }
 
 HomePage.propTypes = {
