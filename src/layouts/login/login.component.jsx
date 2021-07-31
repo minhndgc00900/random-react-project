@@ -2,7 +2,7 @@ import { TextField } from '@material-ui/core'
 import Button from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
-import React from 'react'
+import React, { useState } from 'react'
 import useStyles from './login.styles'
 import VisibilityIcon from '@material-ui/icons/Visibility'
 import PersonIcon from '@material-ui/icons/Person'
@@ -12,7 +12,14 @@ function LoginForm(props) {
 	const { open, handleCloseLogin } = props
 	const classes = useStyles()
 	const handleClose = () => handleCloseLogin()
-
+	const [userName, setUserName] = useState('')
+	const [password, setPassword] = useState('')
+	const onChangeUsername = (event) => {
+		setUserName(event.target.value)
+	}
+	const onChangePassword = (event) => {
+		setPassword(event.target.value)
+	}
 	return (
 		<>
 			<Dialog
@@ -30,7 +37,9 @@ function LoginForm(props) {
 								placeholder='Tên đăng nhập/Email'
 								variant='outlined'
 								fullWidth={true}
+								value={userName}
 								className={classes.textfieldLayout}
+								onChange={onChangeUsername}
 								InputProps={{
 									startAdornment: <PersonIcon />,
 								}}
@@ -43,7 +52,9 @@ function LoginForm(props) {
 								placeholder='Mật khẩu'
 								variant='outlined'
 								fullWidth={true}
+								value={password}
 								type='password'
+								onChange={onChangePassword}
 								className={classes.textfieldLayout}
 								InputProps={{
 									startAdornment: <LockIcon />,
