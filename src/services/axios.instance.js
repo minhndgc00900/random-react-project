@@ -5,31 +5,32 @@ const HEADERS = {
 }
 
 const axiosInstance = axios.create({
-	baseURL: process.env.JWT_ENDPOINT,
+	baseURL: process.env.REACT_APP_JWT_ENDPOINT,
 })
 
-const get = (
+const getRequest = (
 	path = '',
 	param = {},
 	axiosEndpoint = axiosInstance,
 	headers = HEADERS
 ) => {
-	axiosEndpoint
+	return axiosEndpoint
 		.get(path, { headers, param })
-		.then((res) => res.data)
+		.then((res) => res)
 		.catch((err) => Promise.reject(err.response ? err.response.data : err))
 }
 
-const post = (
+const postRequest = (
 	path = '',
 	body = {},
 	axiosEndpoint = axiosInstance,
 	headers = HEADERS
 ) => {
-	axiosEndpoint
+	const request = axiosEndpoint
 		.post(path, body, { headers })
 		.then((res) => res.data)
 		.catch((err) => Promise.reject(err.response ? err.response.data : err))
+	return request
 }
 
-export { get, post }
+export const requestService = { getRequest, postRequest }

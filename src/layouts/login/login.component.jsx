@@ -2,11 +2,14 @@ import { TextField } from '@material-ui/core'
 import Button from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import useStyles from './login.styles'
 import VisibilityIcon from '@material-ui/icons/Visibility'
 import PersonIcon from '@material-ui/icons/Person'
 import LockIcon from '@material-ui/icons/Lock'
+import * as services from '../../services/Users/users.services'
+import axios from 'axios'
+import { setUserSession } from '../../utils/common'
 
 function LoginForm(props) {
 	const { open, handleCloseLogin } = props
@@ -20,6 +23,31 @@ function LoginForm(props) {
 	const onChangePassword = (event) => {
 		setPassword(event.target.value)
 	}
+
+	const [isValid, setIsValid] = useState(false)
+
+	useEffect(() => {
+		if (userName && password) {
+			setIsValid(true)
+		}
+	}, [userName, password])
+
+	const onSubmit = () => {
+		services
+			.signIn({
+				username: userName,
+				password: password,
+			})
+			.then((res) => {
+				if (res) {
+					setUserSession(res?.token, res?.user)
+					setUserName('')
+					setPassword('')
+					handleClose()
+				}
+			})
+	}
+
 	return (
 		<>
 			<Dialog
@@ -67,6 +95,8 @@ function LoginForm(props) {
 								variant='contained'
 								size='large'
 								color='primary'
+								disabled={!isValid ? true : false}
+								onClick={onSubmit}
 								className={classes.btnLogin}
 							>
 								Đăng Nhập

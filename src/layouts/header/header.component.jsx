@@ -1,13 +1,12 @@
-import React, { useState } from 'react'
+import { Button, Grid, Link, Toolbar, Typography } from '@material-ui/core'
 import AppBar from '@material-ui/core/AppBar'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { ReactComponent as ReactLogo } from 'public/bds_logo.svg'
-import useStyles from './header.styles'
-import { Button, Grid, Toolbar, Link, Typography } from '@material-ui/core'
 import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined'
+import { ReactComponent as ReactLogo } from 'public/bds_logo.svg'
+import React, { useState } from 'react'
 import { Link as LinkRRD } from 'react-router-dom'
+import MenuListComponent from '../../components/menu-list/menu-list.component'
 import LoginForm from '../login/login.component'
+import useStyles from './header.styles'
 
 const Header = (props) => {
 	const classes = useStyles()
@@ -108,11 +107,12 @@ const Header = (props) => {
 									</Button>
 								</li>
 								<li>
-									<Button>
+									{/* <Button>
 										<Typography className={classes.fontMenu}>
 											Đăng Ký
 										</Typography>
-									</Button>
+									</Button> */}
+									<MenuListComponent />
 								</li>
 								<li>
 									<Button>

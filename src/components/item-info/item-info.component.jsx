@@ -7,7 +7,6 @@ import useStyles from './item-info.styles'
 const ItemInfo = (props) => {
 	const { article } = props
 	const classes = useStyles()
-	console.log(222, article)
 	return (
 		<Grid className={classes.gridContainer} container>
 			<Grid item xs={4}>
