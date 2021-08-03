@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { useState } from 'react'
 import { useRef } from 'react'
 import {
+	Avatar,
 	Button,
 	ClickAwayListener,
 	Grow,
@@ -11,10 +12,13 @@ import {
 	Paper,
 	Popper,
 } from '@material-ui/core'
+import useStyles from './menu-list.styles'
 
 function MenuListComponent(props) {
+	const { userName, handleLogout } = props
 	const [open, setOpen] = useState(false)
 	const anchorRef = useRef(null)
+	const classes = useStyles()
 
 	const handleClose = (event) => {
 		if (anchorRef.current && anchorRef.current.contains(event.target)) {
@@ -41,9 +45,11 @@ function MenuListComponent(props) {
 				ref={anchorRef}
 				aria-controls={open ? 'menu-list-grow' : undefined}
 				aria-haspopup='true'
+				className={classes.btnUser}
 				onClick={handleToggle}
 			>
-				Toggle Menu Grow
+				<Avatar className={classes.avatar}>M</Avatar>
+				<span>{userName}</span>
 			</Button>
 			<Popper
 				open={open}
@@ -69,7 +75,7 @@ function MenuListComponent(props) {
 								>
 									<MenuItem onClick={handleClose}>Profile</MenuItem>
 									<MenuItem onClick={handleClose}>My account</MenuItem>
-									<MenuItem onClick={handleClose}>Logout</MenuItem>
+									<MenuItem onClick={handleLogout}>Logout</MenuItem>
 								</MenuList>
 							</ClickAwayListener>
 						</Paper>
@@ -80,6 +86,9 @@ function MenuListComponent(props) {
 	)
 }
 
-MenuListComponent.propTypes = {}
+MenuListComponent.propTypes = {
+	userName: PropTypes.string,
+	handleLogout: PropTypes.func,
+}
 
 export default MenuListComponent
