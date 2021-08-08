@@ -8,6 +8,10 @@ const axiosInstance = axios.create({
 	baseURL: process.env.REACT_APP_JWT_ENDPOINT,
 })
 
+const devtoInstance = axios.create({
+	baseURL: process.env.REACT_APP_DEV_TO,
+})
+
 const getRequest = (
 	path = '',
 	param = {},
@@ -33,4 +37,4 @@ const postRequest = (
 	return request
 }
 
-export const requestService = { getRequest, postRequest }
+export const requestService = { getRequest, postRequest, devtoInstance }

@@ -7,6 +7,11 @@ import useStyles from './item-info.styles'
 const ItemInfo = (props) => {
 	const { article } = props
 	const classes = useStyles()
+
+	const onHandleCopyClipboard = (text) => {
+		navigator.clipboard.writeText(text)
+	}
+
 	return (
 		<Grid className={classes.gridContainer} container>
 			<Grid item xs={4}>
@@ -46,7 +51,12 @@ const ItemInfo = (props) => {
 						<span>Minh Nguyen</span>
 					</Grid>
 					<Grid item xs={5}>
-						<Button variant='contained' color='primary' size='small'>
+						<Button
+							variant='contained'
+							color='primary'
+							size='small'
+							onClick={() => onHandleCopyClipboard(article?.phone)}
+						>
 							{article?.phone}
 						</Button>
 					</Grid>
