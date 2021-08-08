@@ -1,5 +1,6 @@
 const mockData = [
 	{
+		id: 1,
 		title: `Chính chủ bán đất P. Ngọc Lâm Long Biên DT 120m2 3,3 tỷ phù hợp xây cho thuê làm kho chứa nhà xưởng`,
 		price: 3.3,
 		area: 120,
@@ -9,6 +10,7 @@ const mockData = [
 		images: ['/images/20210723143906-f2c5_wm.jpg'],
 	},
 	{
+		id: 2,
 		title: `SỐNG KIỂU MỸ GIỮA BA VÌ, ĐỈNH CAO KIẾN TRÚC. GIÁ KHÔNG THỂ HỢP LÝ HƠN. HOTLINE 0828 40 5555`,
 		price: 0,
 		area: 255,

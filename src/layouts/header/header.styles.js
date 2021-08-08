@@ -31,6 +31,9 @@ const useStyles = makeStyles({
 		fontSize: '14px',
 		lineHeight: '20px',
 	},
+	brandLogo: {
+		cursor: 'pointer',
+	},
 })
 
 export default useStyles
