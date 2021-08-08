@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { getArticles } from '../../redux/feng-shui/actions'
 import { listItemSelect } from '../../redux/feng-shui/selectors'
 import { createStructuredSelector } from 'reselect'
+import SearchForm from '../../components/search-form/search-form.component'
 
 const FengShui = (props) => {
 	const { fetchList, listData } = props
@@ -19,7 +20,11 @@ const FengShui = (props) => {
 		}
 	}, [listData])
 
-	return <div></div>
+	return (
+		<>
+			<SearchForm />
+		</>
+	)
 }
 
 FengShui.propTypes = {
