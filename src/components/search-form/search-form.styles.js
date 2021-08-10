@@ -19,6 +19,12 @@ const useStyles = makeStyles({
 			},
 		},
 	},
+	btnSearch: {
+		paddingLeft: '12px',
+		'& > a': {
+			height: '32px',
+		},
+	},
 })
 
 export default useStyles

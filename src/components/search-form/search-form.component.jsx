@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { Grid } from '@material-ui/core'
+import { Button, Grid } from '@material-ui/core'
 import Textbox from '../text-box/text-box.component'
 import useStyles from './search-form.styles'
 import { choices } from '../../data/search-choice'
@@ -22,7 +22,7 @@ function SearchForm(props) {
 		<>
 			<Grid container spacing={0} direction='column' alignItems='center'>
 				<Grid item xs={12}>
-					<Grid container spacing={5}>
+					<Grid container spacing={0}>
 						<Grid item xs={6}>
 							<Textbox
 								className={classes.tbxKeyword}
@@ -31,7 +31,7 @@ function SearchForm(props) {
 								onChange={onChangeKeywords}
 							/>
 						</Grid>
-						<Grid item xs={6}>
+						<Grid item xs={4}>
 							<Textbox
 								select
 								value={choice}
@@ -47,6 +47,15 @@ function SearchForm(props) {
 									</option>
 								))}
 							</Textbox>
+						</Grid>
+						<Grid item xs={2} className={classes.btnSearch}>
+							<Button
+								variant='contained'
+								color='primary'
+								href='#contained-buttons'
+							>
+								Tìm Kiếm
+							</Button>
 						</Grid>
 					</Grid>
 				</Grid>
