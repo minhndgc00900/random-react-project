@@ -1,5 +1,4 @@
 import { Grid } from '@material-ui/core'
-import React from 'react'
 import { infoFengshui, titleInfo } from '../../../constants'
 import useStyles from './main-form.styles'
 
