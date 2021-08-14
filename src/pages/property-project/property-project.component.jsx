@@ -1,7 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Counter from '../../layouts/counter/counter'
+import {
+	decrementCounter,
+	incrementCounter,
+} from '../../redux/counter/actions/index'
+import { createStructuredSelector } from 'reselect'
+import { currentCounterState } from '../../redux/counter/selectors'
 
 const styles = {
 	projectContainer: {
@@ -10,25 +16,44 @@ const styles = {
 }
 
 const PropertyProject = (props) => {
+	const { increment, decrement, counterNumber } = props
+	const [counterValue, setCounterValue] = useState(0)
+
+	useEffect(() => {
+		setCounterValue(counterNumber)
+	}, [counterNumber])
+
+	const onHandleIncrement = () => {
+		increment()
+	}
+
 	return (
 		<div style={styles.projectContainer}>
 			{' '}
 			<Counter
-			// value={store.getState()}
-			// onIncrement={() => action('INCREMENT')}
-			// onDecrement={() => action('DECREMENT')}
-			// onIncrementAsync={() => action('INCREMENT_ASYNC')}
+				value={counterValue}
+				onIncrement={() => onHandleIncrement()}
+				onDecrement={decrement}
+				// onIncrementAsync={() => action('INCREMENT_ASYNC')}
 			/>
 		</div>
 	)
 }
 
 PropertyProject.propTypes = {
-	// props: PropTypes,
+	increment: PropTypes.any,
+	decrement: PropTypes.any,
+	counterNumber: PropTypes.any,
 }
 
-const mapStateToProps = (state) => ({})
+const mapStateToProps = (state) =>
+	createStructuredSelector({
+		counterNumber: currentCounterState,
+	})
 
-const mapDispatchToProps = {}
+const mapDispatchToProps = {
+	increment: () => incrementCounter(),
+	decrement: () => decrementCounter(),
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(PropertyProject)

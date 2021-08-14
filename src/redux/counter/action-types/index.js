@@ -1,0 +1,4 @@
+export const INCREMENT = 'INCREMENT'
+export const DECREMENT = 'DECREMENT'
+export const INCREMENT_SAGA = 'INCREMENT_SAGA'
+export const DECREMENT_SAGA = 'DECREMENT_SAGA'
