@@ -17,6 +17,9 @@ function App() {
 	const PropertyDetail = lazy(() =>
 		import('./pages/property-item/property-item.component')
 	)
+	const PropertyProject = lazy(() =>
+		import('./pages/property-project/property-project.component')
+	)
 	const fengShui = lazy(() => import('./pages/feng-shui/feng-shui.component'))
 
 	return (
@@ -31,6 +34,11 @@ function App() {
 							exact
 							path={ROUTES.propertyForLease}
 							component={PropertyForLease}
+						/>
+						<Route
+							exact
+							path={ROUTES.propertyProject}
+							component={PropertyProject}
 						/>
 						<Route exact path={ROUTES.itemDetail} component={PropertyDetail} />
 						<PrivateRoute
