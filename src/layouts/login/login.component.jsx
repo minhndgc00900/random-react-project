@@ -10,6 +10,7 @@ import LockIcon from '@material-ui/icons/Lock'
 import * as services from '../../services/Users/users.services'
 import axios from 'axios'
 import { setUserSession } from '../../utils/common'
+import Textbox from '../../components/text-box/text-box.component'
 
 function LoginForm(props) {
 	const { open, handleCloseLogin } = props
@@ -60,11 +61,8 @@ function LoginForm(props) {
 				<DialogActions className={classes.dialog}>
 					<form className={classes.root} noValidate autoComplete='off'>
 						<div className={classes.textfieldContainer}>
-							<TextField
-								id='outlined-read-only-input'
+							<Textbox
 								placeholder='Tên đăng nhập/Email'
-								variant='outlined'
-								fullWidth={true}
 								value={userName}
 								className={classes.textfieldLayout}
 								onChange={onChangeUsername}
@@ -75,11 +73,8 @@ function LoginForm(props) {
 						</div>
 
 						<div className={classes.textfieldContainer}>
-							<TextField
-								id='outlined-read-only-input'
+							<Textbox
 								placeholder='Mật khẩu'
-								variant='outlined'
-								fullWidth={true}
 								value={password}
 								type='password'
 								onChange={onChangePassword}

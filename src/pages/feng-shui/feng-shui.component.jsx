@@ -5,6 +5,10 @@ import { connect } from 'react-redux'
 import { getArticles } from '../../redux/feng-shui/actions'
 import { listItemSelect } from '../../redux/feng-shui/selectors'
 import { createStructuredSelector } from 'reselect'
+import SearchForm from '../../components/search-form/search-form.component'
+import { Container, Grid } from '@material-ui/core'
+import RightForm from './right-form/right-form.component'
+import MainForm from './main-form/main-form.component'
 
 const FengShui = (props) => {
 	const { fetchList, listData } = props
@@ -19,7 +23,20 @@ const FengShui = (props) => {
 		}
 	}, [listData])
 
-	return <div></div>
+	return (
+		<>
+			<Container maxWidth='md'>
+				<Grid container spacing={2}>
+					<Grid item xs={9}>
+						<MainForm />
+					</Grid>
+					<Grid item xs={3}>
+						<RightForm />
+					</Grid>
+				</Grid>
+			</Container>
+		</>
+	)
 }
 
 FengShui.propTypes = {
