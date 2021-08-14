@@ -1,5 +1,6 @@
 import { Grid } from '@material-ui/core'
 import { infoFengshui, titleInfo } from '../../../constants'
+import Counter from '../../../layouts/counter/counter'
 import useStyles from './main-form.styles'
 
 function MainForm() {
@@ -7,6 +8,12 @@ function MainForm() {
 	return (
 		<>
 			<div>
+				<Counter
+				// value={store.getState()}
+				// onIncrement={() => action('INCREMENT')}
+				// onDecrement={() => action('DECREMENT')}
+				// onIncrementAsync={() => action('INCREMENT_ASYNC')}
+				/>
 				<div className={classes.container}>
 					<Grid className={classes.summaryContainer} container spacing={2}>
 						<Grid item xs={2} className={classes.imgSize}>
