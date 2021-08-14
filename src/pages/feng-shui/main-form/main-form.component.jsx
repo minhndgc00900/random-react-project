@@ -8,12 +8,6 @@ function MainForm() {
 	return (
 		<>
 			<div>
-				<Counter
-				// value={store.getState()}
-				// onIncrement={() => action('INCREMENT')}
-				// onDecrement={() => action('DECREMENT')}
-				// onIncrementAsync={() => action('INCREMENT_ASYNC')}
-				/>
 				<div className={classes.container}>
 					<Grid className={classes.summaryContainer} container spacing={2}>
 						<Grid item xs={2} className={classes.imgSize}>
