@@ -5,6 +5,7 @@ import Counter from '../../layouts/counter/counter'
 import {
 	decrementCounter,
 	incrementCounter,
+	incrementCounterWithTimeout,
 } from '../../redux/counter/actions/index'
 import { createStructuredSelector } from 'reselect'
 import { currentCounterState } from '../../redux/counter/selectors'
@@ -16,7 +17,7 @@ const styles = {
 }
 
 const PropertyProject = (props) => {
-	const { increment, decrement, counterNumber } = props
+	const { increment, decrement, counterNumber, incrementTimeout } = props
 	const [counterValue, setCounterValue] = useState(0)
 
 	useEffect(() => {
@@ -33,8 +34,8 @@ const PropertyProject = (props) => {
 			<Counter
 				value={counterValue}
 				onIncrement={() => onHandleIncrement()}
-				onDecrement={decrement}
-				// onIncrementAsync={() => action('INCREMENT_ASYNC')}
+				onDecrement={() => decrement()}
+				onIncrementAsync={() => incrementTimeout()}
 			/>
 		</div>
 	)
@@ -43,6 +44,7 @@ const PropertyProject = (props) => {
 PropertyProject.propTypes = {
 	increment: PropTypes.any,
 	decrement: PropTypes.any,
+	incrementTimeout: PropTypes.func,
 	counterNumber: PropTypes.any,
 }
 
@@ -54,6 +56,7 @@ const mapStateToProps = (state) =>
 const mapDispatchToProps = {
 	increment: () => incrementCounter(),
 	decrement: () => decrementCounter(),
+	incrementTimeout: () => incrementCounterWithTimeout(),
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PropertyProject)
