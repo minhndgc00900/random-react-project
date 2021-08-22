@@ -1,0 +1,43 @@
+$font-stack: Roboto, Tahoma !important;
+
+@mixin text-field-layout {
+	margin-bottom: 1.5em !important;
+	div {
+		padding-left: 10px;
+	}
+}
+
+.username-field {
+	@include text-field-layout;
+}
+
+.password-field {
+	@include text-field-layout;
+}
+
+.dialog-container {
+	font-family: $font-stack;
+	line-height: 20px;
+}
+
+.textfield-container {
+}
+
+.login-title {
+	font-weight: bold;
+	font-size: 24px;
+	color: #055699;
+	margin: 30px 0;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.root {
+	width: 100%;
+	padding-left: 2em;
+	padding-right: 2em;
+}
+
+.btn-container {
+	text-align: center;
+}

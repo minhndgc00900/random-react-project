@@ -1,16 +1,15 @@
-import { TextField } from '@material-ui/core'
 import Button from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
-import React, { useEffect, useState } from 'react'
-import useStyles from './login.styles'
-import VisibilityIcon from '@material-ui/icons/Visibility'
-import PersonIcon from '@material-ui/icons/Person'
 import LockIcon from '@material-ui/icons/Lock'
-import * as services from '../../services/Users/users.services'
-import axios from 'axios'
-import { setUserSession } from '../../utils/common'
+import PersonIcon from '@material-ui/icons/Person'
+import VisibilityIcon from '@material-ui/icons/Visibility'
+import React, { useEffect, useState } from 'react'
 import Textbox from '../../components/text-box/text-box.component'
+import * as services from '../../services/Users/users.services'
+import { setUserSession } from '../../utils/common'
+import useStyles from './login.styles'
+import './s-login.styles.scss'
 
 function LoginForm(props) {
 	const { open, handleCloseLogin } = props
@@ -53,18 +52,18 @@ function LoginForm(props) {
 		<>
 			<Dialog
 				open={open}
-				className={classes.dialogContainer}
+				className='dialog-container'
 				onClose={handleClose}
 				aria-labelledby='form-dialog-title'
 			>
-				<h1 className={classes.loginTitle}>Đăng Nhập</h1>
+				<h1 className='login-title'>Đăng Nhập</h1>
 				<DialogActions className={classes.dialog}>
-					<form className={classes.root} noValidate autoComplete='off'>
-						<div className={classes.textfieldContainer}>
+					<form className='root' noValidate autoComplete='off'>
+						<div className='textfield-container'>
 							<Textbox
 								placeholder='Tên đăng nhập/Email'
 								value={userName}
-								className={classes.textfieldLayout}
+								className='username-field'
 								onChange={onChangeUsername}
 								InputProps={{
 									startAdornment: <PersonIcon />,
@@ -72,20 +71,20 @@ function LoginForm(props) {
 							/>
 						</div>
 
-						<div className={classes.textfieldContainer}>
+						<div className='textfield-container'>
 							<Textbox
 								placeholder='Mật khẩu'
 								value={password}
 								type='password'
 								onChange={onChangePassword}
-								className={classes.textfieldLayout}
+								className='password-field'
 								InputProps={{
 									startAdornment: <LockIcon />,
 									endAdornment: <VisibilityIcon />,
 								}}
 							/>
 						</div>
-						<div className={classes.btnContainer}>
+						<div className='btn-container'>
 							<Button
 								variant='contained'
 								size='large'
