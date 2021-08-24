@@ -1,18 +1,31 @@
-$font-stack: Roboto, Tahoma !important;
+@import "./fonts";
 
-@mixin text-field-layout {
-	margin-bottom: 1.5em !important;
+$mobile: 455px;
+
+@mixin text-field-layout($margin-btm: 1em) {
+	margin-bottom: $margin-btm !important;
 	div {
 		padding-left: 10px;
 	}
 }
 
+//455px
+@mixin mobile {
+	@media screen and (max-width: $mobile) {
+		@content;
+	}
+}
+
+@function weight($weight-name) {
+	@return map-get($font-weight, $weight-name);
+}
+
 .username-field {
-	@include text-field-layout;
+	@include text-field-layout(1.5em);
 }
 
 .password-field {
-	@include text-field-layout;
+	@include text-field-layout(1.5em);
 }
 
 .dialog-container {
@@ -24,7 +37,7 @@ $font-stack: Roboto, Tahoma !important;
 }
 
 .login-title {
-	font-weight: bold;
+	font-weight: weight(bold);
 	font-size: 24px;
 	color: #055699;
 	margin: 30px 0;
@@ -36,6 +49,9 @@ $font-stack: Roboto, Tahoma !important;
 	width: 100%;
 	padding-left: 2em;
 	padding-right: 2em;
+	@include mobile {
+		padding-right: 9em;
+	}
 }
 
 .btn-container {
