@@ -7,7 +7,7 @@ function MainForm(props) {
 	const { articles } = useContext(ArticleContext)
 
 	const getListArticle = (articles) => {
-		return articles.map((it) => <ItemInfo article={it} />)
+		return articles.map((it, index) => <ItemInfo article={it} />)
 	}
 
 	return (

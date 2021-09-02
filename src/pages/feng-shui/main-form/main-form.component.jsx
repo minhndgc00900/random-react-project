@@ -1,6 +1,5 @@
 import { Grid } from '@material-ui/core'
 import { infoFengshui, titleInfo } from '../../../constants'
-import Counter from '../../../layouts/counter/counter'
 import useStyles from './main-form.styles'
 
 function MainForm() {
