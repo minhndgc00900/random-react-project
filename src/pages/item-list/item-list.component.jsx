@@ -1,15 +1,26 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Container, Grid } from '@material-ui/core'
-import ItemInfo from '../../components/item-info/item-info.component'
 import MainForm from './main-form/main-form.component'
 import RightForm from './right-form/right-form.component'
 import ArticleContext from '../../contexts/article-context'
 import { mockData } from '../../data/items'
+import { getItemList } from '../../redux/property-for-lease/actions'
+import { createStructuredSelector } from 'reselect'
+import { itemListState } from '../../redux/property-for-lease/selectors'
 
 const ItemList = (props) => {
-	const [articles, setArticles] = useState(mockData)
+	const { fetchItemList, itemListData } = props
+	const [articles, setArticles] = useState([])
+
+	useEffect(() => {
+		fetchItemList(mockData)
+	}, [])
+
+	useEffect(() => {
+		setArticles(itemListData)
+	}, [itemListData])
 
 	return (
 		<>
@@ -30,12 +41,14 @@ const ItemList = (props) => {
 }
 
 ItemList.propTypes = {
-	// props: PropTypes
+	fetchItemList: PropTypes.any,
+}
+const mapStateToProps = createStructuredSelector({
+	itemListData: itemListState,
+})
+
+const mapDispatchToProps = {
+	fetchItemList: (param) => getItemList(param),
 }
 
-const mapStateToProps = (state) => ({})
-
-const mapDispatchToProps = {}
-
-// export default connect(mapStateToProps, mapDispatchToProps)(ItemList)
-export default ItemList
+export default connect(mapStateToProps, mapDispatchToProps)(ItemList)

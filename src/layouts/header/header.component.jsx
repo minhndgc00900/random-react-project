@@ -65,7 +65,7 @@ const Header = (props) => {
 									</Link>
 								</li>
 								<li>
-									<Link color='initial' component='button'>
+									<Link color='initial' component={LinkRRD} to={'/du-an'}>
 										<Typography className={classes.fontMenu}>Dự án</Typography>
 									</Link>
 								</li>
