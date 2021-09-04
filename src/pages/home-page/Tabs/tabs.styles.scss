@@ -4,3 +4,31 @@
     flex-grow: 1;
     padding-left: 0;
 }
+
+.MuiTab-wrapper{
+    font-size: 22px;
+    font-weight: 600;
+    color: $grey-color;
+    text-transform: capitalize;
+}
+
+.MuiAppBar-colorPrimary{
+    background-color: transparent;
+}
+
+.MuiPaper-elevation4{
+    box-shadow: none;
+}
+
+.PrivateTabIndicator-colorSecondary-24{
+    background-color: $organic-team;
+    // width: 80px !important;
+}
+
+.PrivateTabIndicator-root-22{
+    height:5px;
+}
+
+.MuiTab-textColorInherit.Mui-selected{
+    opacity: 10;
+}

@@ -17,9 +17,15 @@ function BreadcrumbsUI(props) {
 	}
 
 	const pathnames = pathname.split('/').filter((x) => x)
+
 	const classes = useStyles()
 	return (
-		<Container className={classes.breadcrumbsContainer} maxWidth='md'>
+		<Container
+			className={`${classes.breadcrumbsContainer} ${
+				pathnames.length === 0 ? classes.hideBreadcrumb : ''
+			}`}
+			maxWidth='md'
+		>
 			<Breadcrumbs>
 				{pathnames.length > 0 ? (
 					<Link color='inherit' href='/' onClick={() => history.push('/')}>

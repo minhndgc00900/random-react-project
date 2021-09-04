@@ -1,6 +1,9 @@
+@import '../../styles/variables.scss';
+
 .homepage-container {
     width: 100%;
     position: relative;
+    font-family: 'Roboto',Tahoma;
 }
 
 .carousel.carousel-slider {
@@ -15,3 +18,8 @@
     padding-left: 11em;
     padding-right: 11em;
 }
+
+.property-suggetion-background {
+    background-color: $light-grey-color;
+}
+

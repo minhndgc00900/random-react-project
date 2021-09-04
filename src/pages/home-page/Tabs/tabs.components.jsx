@@ -1,5 +1,7 @@
 import { AppBar, Tab, Tabs } from '@material-ui/core'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import HomeContext from '../../../contexts/home-context'
+import TabContent from './tab-panel/tab-content/tab-content.component'
 import TabPanel from './tab-panel/tab-panel.component'
 import './tabs.styles.scss'
 
@@ -10,6 +12,8 @@ const a11yProps = (index) => ({
 
 function TabsComponent() {
 	const [value, setValue] = useState(0)
+	const useHomeContext = useContext(HomeContext)
+	const { newsState } = useHomeContext
 
 	const handleChange = (event, newValue) => {
 		setValue(newValue)
@@ -23,20 +27,18 @@ function TabsComponent() {
 					onChange={handleChange}
 					aria-label='simple tabs example'
 				>
-					<Tab label='Item One' {...a11yProps(0)} />
-					<Tab label='Item Two' {...a11yProps(1)} />
-					<Tab label='Item Three' {...a11yProps(2)} />
+					{newsState.map((it, index) => {
+						return <Tab label={it.desc} {...a11yProps(index)} />
+					})}
 				</Tabs>
 			</AppBar>
-			<TabPanel value={value} index={0}>
-				Item One
-			</TabPanel>
-			<TabPanel value={value} index={1}>
-				Item Two
-			</TabPanel>
-			<TabPanel value={value} index={2}>
-				Item Three
-			</TabPanel>
+			{newsState.map((it, index) => {
+				return (
+					<TabPanel value={value} index={index}>
+						<TabContent content={it} />
+					</TabPanel>
+				)
+			})}
 		</div>
 	)
 }
