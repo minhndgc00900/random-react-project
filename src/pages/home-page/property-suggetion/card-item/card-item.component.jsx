@@ -5,34 +5,44 @@ import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
+import './card-item.styles.scss'
 
-function CardItem() {
+function CardItem({ item }) {
+	const onHandleLongTitle = (input) => {
+		return input.length > 50 ? `${input.substring(0, 50)}...` : input
+	}
+
 	return (
 		<Card className='root-main'>
-			<CardActionArea>
-				<img
-					className='media'
-					src='https://file4.batdongsan.com.vn/crop/257x147/2021/09/01/20210901091717-8a7b_wm.jpg'
-					alt='Contemplative Reptile'
-				/>
-				<CardContent>
-					<Typography gutterBottom variant='h5' component='h2'>
-						Lizard
+			<CardActionArea className='card-action-area'>
+				<img className='media' src={item.image} alt='Contemplative Reptile' />
+				<CardContent className='card-content'>
+					<Typography
+						variant='body2'
+						color='textSecondary'
+						className='title-card'
+						component='p'
+					>
+						{onHandleLongTitle(item.title)}
 					</Typography>
-					<Typography variant='body2' color='textSecondary' component='p'>
-						Lizards are a widespread group of squamate reptiles, with over 6,000
-						species, ranging across all continents except Antarctica
-					</Typography>
+					<div className='pt-2'>
+						<span className='pr-m2'>
+							{item.price === 'negotiable' ? 'Giá thỏa thuận' : item.price}
+						</span>
+						<span className='dot'>.</span>
+						<span className='pr-m2'>{item.area}</span>
+					</div>
+					<div className='pt-2 product-address'>
+						<a href='*' title={item.address}>
+							{item.address}
+						</a>
+						,
+						<a href='*' title={item.city}>
+							{item.city}
+						</a>
+					</div>
 				</CardContent>
 			</CardActionArea>
-			<CardActions>
-				<Button size='small' color='primary'>
-					Share
-				</Button>
-				<Button size='small' color='primary'>
-					Learn More
-				</Button>
-			</CardActions>
 		</Card>
 	)
 }

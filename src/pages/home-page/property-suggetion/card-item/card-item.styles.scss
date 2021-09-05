@@ -1,6 +1,62 @@
+@import "../../../../styles/variables.scss";
+
 root-main {
     max-width: 345;
 }
 media {
     height: 140;
+}
+
+.title-card {
+    text-transform: uppercase !important;
+    color: $light-red;
+    font-weight: 500;
+}
+
+.card-content {
+    padding: 10px;
+    font-size: 13px;
+}
+
+.pr-m2 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 20px;
+    color: #2c2f36;
+    width: auto;
+    float: left;
+}
+
+.dot {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    color: #747c87;
+    float: left;
+    margin-right: 8px;
+    margin-left: 8px;
+    margin-top: -2px;
+}
+
+.pt-2 {
+    margin-top: 3px;
+}
+
+.product-address {
+    display: inline-block;
+    width: 100%;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 4px 0 6px 0;
+    a {
+        color: #2c2f36;
+        text-decoration: none;
+        a:hover {
+            text-decoration: underline;
+        }
+    }
 }
