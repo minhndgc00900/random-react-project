@@ -4,7 +4,7 @@ import DialogActions from '@material-ui/core/DialogActions'
 import LockIcon from '@material-ui/icons/Lock'
 import PersonIcon from '@material-ui/icons/Person'
 import VisibilityIcon from '@material-ui/icons/Visibility'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Textbox from '../../components/text-box/text-box.component'
 import * as services from '../../services/Users/users.services'
 import { setUserSession } from '../../utils/common'
@@ -15,34 +15,43 @@ function LoginForm(props) {
 	const { open, handleCloseLogin } = props
 	const classes = useStyles()
 	const handleClose = () => handleCloseLogin()
-	const [userName, setUserName] = useState('')
-	const [password, setPassword] = useState('')
-	const onChangeUsername = (event) => {
-		setUserName(event.target.value)
-	}
-	const onChangePassword = (event) => {
-		setPassword(event.target.value)
+	const [loginInfo, setLoginInfo] = useState({
+		userName: '',
+		password: '',
+	})
+	const referenceLogin = useRef({
+		userName: '',
+		password: '',
+	})
+
+	const onChangeLoginInfo = (event) => {
+		const loginInfoTemp = JSON.parse(JSON.stringify(loginInfo))
+		referenceLogin.current[event.target.name] = event.target.value
+		loginInfoTemp[event.target.name] = event.target.value
+		setLoginInfo(loginInfoTemp)
 	}
 
 	const [isValid, setIsValid] = useState(false)
 
 	useEffect(() => {
-		if (userName && password) {
+		if (loginInfo.userName !== '' && loginInfo.password !== '') {
 			setIsValid(true)
 		}
-	}, [userName, password])
+	}, [loginInfo])
 
 	const onSubmit = () => {
 		services
 			.signIn({
-				username: userName,
-				password: password,
+				username: loginInfo.userName,
+				password: loginInfo.password,
 			})
 			.then((res) => {
 				if (res) {
 					setUserSession(res?.token, res?.user)
-					setUserName('')
-					setPassword('')
+					setLoginInfo({
+						userName: '',
+						password: '',
+					})
 					handleClose()
 				}
 			})
@@ -62,9 +71,10 @@ function LoginForm(props) {
 						<div className='textfield-container'>
 							<Textbox
 								placeholder='Tên đăng nhập/Email'
-								value={userName}
+								value={referenceLogin.current.userName}
 								className='username-field'
-								onChange={onChangeUsername}
+								name='userName'
+								onChange={onChangeLoginInfo}
 								InputProps={{
 									startAdornment: <PersonIcon />,
 								}}
@@ -74,9 +84,10 @@ function LoginForm(props) {
 						<div className='textfield-container'>
 							<Textbox
 								placeholder='Mật khẩu'
-								value={password}
+								value={referenceLogin.current.password}
 								type='password'
-								onChange={onChangePassword}
+								name='password'
+								onChange={onChangeLoginInfo}
 								className='password-field'
 								InputProps={{
 									startAdornment: <LockIcon />,
