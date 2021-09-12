@@ -1,6 +1,5 @@
 import { Grid } from '@material-ui/core'
 import { useEffect, useState } from 'react'
-import { Carousel } from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import HomeContext from '../../contexts/home-context'
 import './home-page.styles.scss'
@@ -10,15 +9,11 @@ import { news } from '../../data/news'
 import PropertySuggetion from './property-suggetion/property-suggetion.component'
 import { suggetion } from '../../data/property-suggetion-data'
 import Button from '@material-ui/core/Button'
+import HotProperty from './hot-property/hot-property.component'
+import MainSlider from './main-slider/main-slider.component'
+import { hotPropertyData } from '../../data/hot-properties'
 
 const HomePage = (props) => {
-	const param = {
-		showArrows: false,
-		autoPlay: true,
-		showThumbs: false,
-		infiniteLoop: true,
-		interval: 2000,
-	}
 	const [newsState, setNewsState] = useState(news)
 	const [propSuggetion, setPropSuggetion] = useState([])
 
@@ -40,22 +35,7 @@ const HomePage = (props) => {
 			}}
 		>
 			<div className='homepage-container'>
-				<Carousel
-					{...param}
-					// onChange={onChange}
-					// onClickItem={onClickItem}
-					// onClickThumb={onClickThumb}
-				>
-					<div>
-						<img src='https://mdbootstrap.com/img/Photos/Slides/img%20(15).jpg' />
-					</div>
-					<div>
-						<img src='https://mdbootstrap.com/img/Photos/Slides/img%20(22).jpg' />
-					</div>
-					<div>
-						<img src='https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg' />
-					</div>
-				</Carousel>
+				<MainSlider />
 				<Grid container spacing={2} className='home-page-news'>
 					<Grid item xs={9}>
 						<MainForm />
@@ -78,6 +58,7 @@ const HomePage = (props) => {
 						</Button>
 					</div>
 				</div>
+				<HotProperty data={hotPropertyData} />
 			</div>
 		</HomeContext.Provider>
 	)
